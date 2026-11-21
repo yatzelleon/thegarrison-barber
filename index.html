@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Garrison – Barbería & Taproom · Los Olivos, Lima</title>
+<meta name="description" content="Barbería clásica y taproom de cerveza artesanal en Los Olivos. Cortes de precisión, ritual de barba, rock & roll.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{onyx:'#0B0B0D',slate2:'#141418',graph:'#1E1E24',amber:{DEFAULT:'#D97706',l:'#F59E0B'},burg:'#991B1B',bone:'#F8FAFC',silver:'#94A3B8'},fontFamily:{head:['Oswald','sans-serif'],body:['Plus Jakarta Sans','sans-serif']}}}}
+</script>
+<style>
+html,body{overflow-x:hidden;scroll-behavior:smooth}
+body{background:#0B0B0D;color:#F8FAFC;font-family:'Plus Jakarta Sans',sans-serif}
+h1,h2,h3,.fh{font-family:'Oswald',sans-serif;letter-spacing:.02em}
+.glass{background:rgba(11,11,13,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.card{background:#141418;border:1px solid #2a2a31;border-radius:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:0 1.5rem;font-weight:700;border-radius:4px;transition:.2s}
+.btn-g{background:linear-gradient(135deg,#F59E0B,#D97706);color:#0B0B0D}.btn-g:hover{filter:brightness(1.1)}
+.btn-o{border:1px solid #D97706;color:#F59E0B}.btn-o:hover{background:#D97706;color:#0B0B0D}
+.fld{width:100%;min-height:48px;background:#1E1E24;border:1px solid #33333b;border-radius:4px;padding:0 .9rem;color:#F8FAFC}
+.fld:focus,.chip:focus-visible{outline:2px solid #F59E0B}
+.chip{min-height:48px;padding:.5rem 1rem;border:1px solid #33333b;background:#1E1E24;border-radius:4px;text-align:left;font-size:.9rem;transition:.2s}
+.chip[aria-pressed=true]{border-color:#F59E0B;background:#D9770622;color:#F59E0B}
+.ph{background:radial-gradient(circle at 30% 20%,#D9770644,#0B0B0D 70%);display:flex;align-items:center;justify-content:center;color:#F59E0B}
+.stripe{background:repeating-linear-gradient(45deg,#991B1B 0 14px,#F8FAFC 14px 28px,#1d3a8a 28px 42px,#F8FAFC 42px 56px);height:6px}
+@keyframes pulse2{50%{opacity:.35}}.dot{animation:pulse2 1.6s infinite}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<!-- Estado del local -->
+<div id="statusBar" class="bg-slate2 border-b border-graph text-center text-xs sm:text-sm py-2 px-3 font-semibold relative z-50"></div>
+
+<!-- NAV -->
+<header class="glass sticky top-0 z-40 border-b border-graph">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+  <a href="#inicio" class="leading-none">
+   <span class="fh text-xl sm:text-2xl font-bold text-bone block">THE GARRISON</span>
+   <span class="text-[9px] sm:text-[10px] tracking-[.18em] text-amber-l">GROOMING · CRAFT BEER · ROCK & ROLL</span>
+  </a>
+  <nav class="hidden lg:flex items-center gap-7 text-sm text-silver">
+   <a class="hover:text-amber-l" href="#servicios">Servicios</a><a class="hover:text-amber-l" href="#taproom">Taproom</a><a class="hover:text-amber-l" href="#productos">Productos</a><a class="hover:text-amber-l" href="#resenas">Reseñas</a><a class="hover:text-amber-l" href="#ubicacion">Ubicación</a>
+   <a href="#reservar" class="btn btn-g !min-h-[40px] !px-4">Reservar Cita</a>
+  </nav>
+  <button id="burger" aria-label="Abrir menú" aria-expanded="false" class="lg:hidden w-12 h-12 flex items-center justify-center text-amber-l"><i data-lucide="menu"></i></button>
+ </div>
+</header>
+<!-- Cajón móvil -->
+<div id="drawer" class="fixed inset-0 z-[60] bg-onyx/95 backdrop-blur-md translate-x-full transition-transform duration-300 lg:hidden flex flex-col px-6 py-5">
+ <div class="flex justify-between items-center"><span class="fh text-xl font-bold">THE GARRISON</span><button id="closeD" aria-label="Cerrar menú" class="w-12 h-12 flex items-center justify-center text-amber-l"><i data-lucide="x"></i></button></div>
+ <nav class="flex flex-col gap-1 mt-8 fh text-3xl">
+  <a class="dl py-3 border-b border-graph" href="#servicios">Servicios</a><a class="dl py-3 border-b border-graph" href="#taproom">Taproom</a><a class="dl py-3 border-b border-graph" href="#productos">Productos</a><a class="dl py-3 border-b border-graph" href="#resenas">Reseñas</a><a class="dl py-3 border-b border-graph" href="#ubicacion">Ubicación</a>
+ </nav>
+ <a class="btn btn-g w-full mt-auto" target="_blank" rel="noopener" href="https://wa.me/51986769187?text=Hola%20The%20Garrison%2C%20quiero%20separar%20una%20cita%20para%20corte%2Fbarba"><i data-lucide="message-circle"></i>Escríbenos por WhatsApp</a>
+</div>
+
+<main id="inicio">
+<!-- HERO -->
+<section class="relative">
+ <div class="absolute inset-0"><img data-fb="0" src="https://lh3.googleusercontent.com/grass-cs/AABkmLeNur31c0iUcKvl57r4ZIMjzufUkhBkEO-qtjypXMJKOkxVRKIbnAHTWFLNfLZedyHKZZXb48ULukwjXAS6_MTfGOXmA49XQkGrf7zU3sKDT7lXjV8eXUyl1m8l4UCFHj5xJJ66-w28mwtq=k-no" alt="Ambiente principal de The Garrison" class="w-full h-full object-cover opacity-40" onerror="fix(this)"><div class="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/70 to-onyx/40"></div></div>
+ <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
+  <span class="inline-block text-[11px] sm:text-xs font-bold bg-burg/80 border border-burg text-bone px-3 py-2 rounded-sm">★ 4.7 EN GOOGLE (78 RESEÑAS) · AV. ANTÚNEZ DE MAYOLO 823, LOS OLIVOS</span>
+  <h1 class="mt-6 text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl uppercase">Más que un corte. Es actitud, rock & roll y cerveza artesanal.</h1>
+  <p class="mt-5 text-silver max-w-2xl text-base sm:text-lg leading-relaxed">No necesitas ir hasta Miraflores o San Isidro para vivir una experiencia de barbería A1. Cortes de precisión, ritual de barba, buena música y cerveza tirada del barril en el corazón de Los Olivos.</p>
+  <div class="mt-8 flex flex-col sm:flex-row gap-3">
+   <a href="#reservar" class="btn btn-g w-full sm:w-auto"><i data-lucide="calendar-check"></i>Agendar Cita por WhatsApp</a>
+   <a href="#servicios" class="btn btn-o w-full sm:w-auto"><i data-lucide="scissors"></i>Explorar Servicios</a>
+  </div>
+  <ul class="mt-8 flex flex-wrap gap-2 text-xs sm:text-sm">
+   <li class="card px-3 py-2 flex items-center gap-2"><i data-lucide="beer" class="w-4 h-4 text-amber-l"></i>Cerveza Artesanal de Barril</li>
+   <li class="card px-3 py-2 flex items-center gap-2"><i data-lucide="car" class="w-4 h-4 text-amber-l"></i>Estacionamiento Gratuito en Calle</li>
+   <li class="card px-3 py-2 flex items-center gap-2"><i data-lucide="credit-card" class="w-4 h-4 text-amber-l"></i>Aceptamos Tarjetas y Pagos NFC</li>
+  </ul>
+ </div>
+ <div class="stripe"></div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="py-16 sm:py-20">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-3xl sm:text-4xl font-bold uppercase">Servicios de Barbería & Grooming</h2>
+  <p class="text-silver mt-2 max-w-xl">Elige tu servicio y reserva directo por WhatsApp.</p>
+  <div id="svc" class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+ </div>
+</section>
+
+<!-- AGENDADOR -->
+<section id="reservar" class="py-16 sm:py-20 bg-slate2 border-y border-graph">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
+  <div>
+   <h2 class="text-3xl sm:text-4xl font-bold uppercase">Separa tu silla</h2>
+   <p class="text-silver mt-3 leading-relaxed">Sin DMs ni esperas. Completa tus datos y te llevamos a WhatsApp con el mensaje listo para enviar.</p>
+   <div class="mt-6 rounded overflow-hidden aspect-[4/3]"><img data-fb="2" src="https://lh3.googleusercontent.com/grass-cs/AABkmLfmqBbrCFylEP0mB1sK_kqKz7ILztA-VP-mrYwJsSWVzgERxfmKFvQ725SqjOxJyVozgaJlpuJf8U4Ox2qK-3ShZcHqPQF2TMN_ndJkmUdpKdfPhyMrGHY5v1A2AxHm6JzkNqpQpIN7DaPK=k-no" alt="Barberos y clientes en The Garrison" class="w-full h-full object-cover" loading="lazy" onerror="fix(this)"></div>
+  </div>
+  <div class="card p-5 sm:p-7 border-amber/50">
+   <div class="grid gap-4">
+    <label class="text-sm font-semibold">Servicio
+     <select id="bSvc" class="fld mt-1 font-normal"><option>Corte Clásico / Taper Fade</option><option>Corte + Ritual de Barba con Toalla Caliente</option><option>Diseño y Perfilado de Barba</option><option>Limpieza Facial & Cejas</option><option>Paquete Full Garrison (Corte + Barba + Cerveza Artesanal)</option></select></label>
+    <label class="text-sm font-semibold">Barbero de preferencia
+     <select id="bBar" class="fld mt-1 font-normal"><option>Alexander (Top Barber)</option><option>Staff Especializado The Garrison</option><option>Primer disponible</option></select></label>
+    <label class="text-sm font-semibold">Fecha
+     <input id="bDate" type="date" class="fld mt-1 font-normal"></label>
+    <label class="text-sm font-semibold">Turno preferido
+     <select id="bTurn" class="fld mt-1 font-normal"><option>Mañana/Mediodía (10:30 a.m. - 2:00 p.m.)</option><option>Tarde (2:00 p.m. - 6:00 p.m.)</option><option>Noche (6:00 p.m. - 9:30 p.m.)</option></select></label>
+    <label class="text-sm font-semibold">Tu nombre
+     <input id="bName" type="text" autocomplete="name" placeholder="Ej. Carlos" class="fld mt-1 font-normal"></label>
+    <p id="bErr" role="alert" class="text-sm text-red-400 hidden"></p>
+    <p id="bHint" class="text-xs text-silver"></p>
+    <button id="bGo" class="btn btn-g w-full"><i data-lucide="message-circle"></i>Reservar Cita por WhatsApp</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- RUTA GARRISON -->
+<section id="ruta" class="py-16 sm:py-20">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-3xl sm:text-4xl font-bold uppercase">La Ruta Garrison</h2>
+  <p class="text-silver mt-2 max-w-2xl">De la silla del barbero a la barra del taproom. Arma tu experiencia y te recomendamos qué usar.</p>
+  <div class="mt-8 grid lg:grid-cols-2 gap-6">
+   <div class="card p-5 sm:p-6 grid gap-5">
+    <div><p class="font-semibold mb-2">1. Tu estilo de corte</p><div id="rStyle" class="grid grid-cols-1 sm:grid-cols-3 gap-2"></div></div>
+    <div><p class="font-semibold mb-2">2. Tu acompañamiento</p><div id="rDrink" class="grid grid-cols-1 sm:grid-cols-3 gap-2"></div></div>
+   </div>
+   <div class="card p-5 sm:p-6 border-amber/50 flex flex-col">
+    <p class="fh text-amber-l text-lg">Tu recomendación</p>
+    <p id="rOut" class="mt-3 text-silver leading-relaxed flex-1">Elige un estilo y un acompañamiento para ver tu ruta.</p>
+    <button id="rGo" disabled class="btn btn-g w-full mt-5 disabled:opacity-40 disabled:cursor-not-allowed"><i data-lucide="message-circle"></i>Separar esta experiencia por WhatsApp</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- TAPROOM -->
+<section id="taproom" class="py-16 sm:py-20 bg-slate2 border-y border-graph">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+  <div class="rounded overflow-hidden aspect-[4/3]"><img data-fb="3" src="https://lh3.googleusercontent.com/grass-cs/AABkmLdGkuWCZpu-jUckWbtVo-0c3cqaAXv_HN9Wpm1UD2y6ZG8ycJ14c1KeWy0SFluw4QphKtUykY-SN79jEfmQ1s0knv6WTvZo9ycZCWeimrnmcea5knhnBRGORLSXN5ZSpO2F7aJ8jxhb7mKF=k-no" alt="Interior y detalles del Taproom" class="w-full h-full object-cover" loading="lazy" onerror="fix(this)"></div>
+  <div>
+   <h2 class="text-3xl sm:text-4xl font-bold uppercase">El Taproom</h2>
+   <p class="text-silver mt-4 leading-relaxed">Sales de la silla con el corte nuevo y te esperan cervezas artesanales tiradas del barril, incluyendo marcas reconocidas como Barbarian, al ritmo del mejor rock & roll. Esa es la Ruta Garrison.</p>
+   <ul class="mt-6 grid sm:grid-cols-2 gap-3 text-sm">
+    <li class="flex gap-2"><i data-lucide="beer" class="text-amber-l shrink-0"></i>Cerveza de barril</li>
+    <li class="flex gap-2"><i data-lucide="music" class="text-amber-l shrink-0"></i>Rock & roll todo el día</li>
+    <li class="flex gap-2"><i data-lucide="coffee" class="text-amber-l shrink-0"></i>Café y bebidas sin alcohol</li>
+    <li class="flex gap-2"><i data-lucide="users" class="text-amber-l shrink-0"></i>Ambiente para ir con amigos</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos" class="py-16 sm:py-20">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-3xl sm:text-4xl font-bold uppercase">Productos oficiales</h2>
+  <p class="text-silver mt-2 max-w-2xl">Tienda interna de productos originales: ceras, pomadas, barros y cremas para mantener el corte en casa.</p>
+  <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+   <div class="card p-6"><i data-lucide="sparkles" class="text-amber-l"></i><h3 class="text-xl font-semibold mt-3">Pomadas Reuzel</h3><p class="text-silver text-sm mt-2">Base agua o base grasa, de fijación flexible a fuerte, con acabado brillante o mate.</p></div>
+   <div class="card p-6"><i data-lucide="droplets" class="text-amber-l"></i><h3 class="text-xl font-semibold mt-3">Muk Haircare</h3><p class="text-silver text-sm mt-2">Barros y ceras de textura para look natural y movimiento todo el día.</p></div>
+   <div class="card p-6"><i data-lucide="waves" class="text-amber-l"></i><h3 class="text-xl font-semibold mt-3">Kinky Muk</h3><p class="text-silver text-sm mt-2">Cremas de definición para rizos: hidratación y control de frizz.</p></div>
+  </div>
+  <a class="btn btn-o w-full sm:w-auto mt-8" target="_blank" rel="noopener" href="https://wa.me/51986769187?text=Hola%20The%20Garrison%2C%20quiero%20consultar%20por%20productos%20Reuzel%20y%20Muk"><i data-lucide="shopping-bag"></i>Consultar productos</a>
+ </div>
+</section>
+
+<!-- RESEÑAS -->
+<section id="resenas" class="py-16 sm:py-20 bg-slate2 border-y border-graph">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-3xl sm:text-4xl font-bold uppercase">Lo que dicen nuestros clientes en Los Olivos</h2>
+  <p class="text-silver mt-2">4.7 estrellas en Google · 78 reseñas</p>
+  <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+   <figure class="card p-6"><div class="text-amber-l">★★★★★</div><blockquote class="mt-3 leading-relaxed">“The Garrison, la mejor barber de Los Olivos. Agenden con Alexander, el más top. Excelente ambiente y música.”</blockquote><figcaption class="mt-4 text-sm text-silver">Cliente de Google</figcaption></figure>
+   <figure class="card p-6"><div class="text-amber-l">★★★★★</div><blockquote class="mt-3 leading-relaxed">“Fui para mi cumpleaños a renovar el corte y quedé súper satisfecho: la atención, el lavado, los detalles y la cerveza artesanal.”</blockquote><figcaption class="mt-4 text-sm text-silver">Cliente de Google</figcaption></figure>
+   <figure class="card p-6"><div class="text-amber-l">★★★★★</div><blockquote class="mt-3 leading-relaxed">“Exclusividad y servicio A1 en Antúnez de Mayolo. Se nota el profesionalismo y los buenos productos que usan.”</blockquote><figcaption class="mt-4 text-sm text-silver">Cliente de Google</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section id="ubicacion" class="py-16 sm:py-20">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-3xl sm:text-4xl font-bold uppercase">Ubicación y horarios</h2>
+  <div class="mt-8 grid lg:grid-cols-2 gap-8">
+   <div class="grid gap-6">
+    <div class="rounded overflow-hidden aspect-[16/9]"><img data-fb="1" src="https://lh3.googleusercontent.com/grass-cs/AABkmLfgOuhRPGrqZ11o4JJLPBolvpBtqIlpyYV5R7hovRTJ_WXChyCLvywXTCVvknzxHPnfpI2CZbzJUHyWhg06XRXKuw4m0dpu9nQou2VsDmPxN2JTOUd-tgd_3rrxkklI5i-8K_0i=k-no" alt="Fachada de The Garrison" class="w-full h-full object-cover" loading="lazy" onerror="fix(this)"></div>
+    <div class="card p-5 text-sm leading-relaxed">
+     <p class="flex gap-2"><i data-lucide="map-pin" class="text-amber-l shrink-0"></i>Av. Santiago Antúnez de Mayolo 823, Los Olivos 15301, Lima · Estacionamiento gratuito en calle</p>
+     <dl class="mt-4 grid grid-cols-[1fr_auto] gap-y-2 gap-x-4">
+      <dt>Lun, Mar, Jue, Vie y Sáb</dt><dd class="text-silver">10:30 a.m. – 9:30 p.m.</dd>
+      <dt>Domingos</dt><dd class="text-silver">11:30 a.m. – 8:00 p.m.</dd>
+      <dt>Miércoles</dt><dd class="text-burg font-bold">Cerrado</dd>
+     </dl>
+    </div>
+   </div>
+   <div>
+    <iframe title="Mapa de The Garrison" class="w-full h-64 sm:h-80 rounded border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Av.+Santiago+Antunez+de+Mayolo+823,+Los+Olivos,+Lima&output=embed"></iframe>
+    <a class="btn btn-o w-full sm:w-auto mt-4" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Av.+Santiago+Antunez+de+Mayolo+823,+Los+Olivos,+Lima"><i data-lucide="navigation"></i>Cómo llegar en Google Maps</a>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="bg-slate2 border-t border-graph">
+ <div class="stripe"></div>
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 text-sm">
+  <div><p class="fh text-2xl font-bold">THE GARRISON</p><p class="text-silver mt-2">Barbería & Taproom · Los Olivos, Lima</p></div>
+  <div class="grid gap-2"><p class="font-bold text-amber-l">Contacto</p>
+   <a class="text-silver hover:text-bone py-1" href="https://wa.me/51986769187" target="_blank" rel="noopener">WhatsApp +51 986 769 187</a>
+   <a class="text-silver hover:text-bone py-1" href="https://instagram.com/thegarrisonperu" target="_blank" rel="noopener">Instagram @thegarrisonperu</a>
+   <a class="text-silver hover:text-bone py-1" href="https://www.tiktok.com/@thegarrisonperu" target="_blank" rel="noopener">TikTok @thegarrisonperu</a></div>
+  <div class="text-silver"><p class="font-bold text-amber-l mb-2">Dirección</p>Av. Santiago Antúnez de Mayolo 823, Los Olivos 15301, Lima</div>
+ </div>
+ <p class="text-center text-xs text-silver pb-6 px-4">© 2026 The Garrison. Tomar con moderación. Prohibida la venta de alcohol a menores de 18 años.</p>
+</footer>
+
+<a id="wa" aria-label="WhatsApp" target="_blank" rel="noopener" href="https://wa.me/51986769187?text=Hola%20The%20Garrison%2C%20quiero%20separar%20una%20cita%20para%20corte%2Fbarba" class="fixed bottom-4 right-4 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg"><i data-lucide="message-circle" class="w-7 h-7"></i></a>
+
+<script>
+const WA='https://wa.me/51986769187?text=';
+const $=s=>document.querySelector(s);
+const icons=()=>window.lucide&&lucide.createIcons();
+
+/* Imágenes con respaldo: URL original -> Unsplash -> bloque ámbar con ícono */
+const UNS=['https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1400&q=70','https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1400&q=70','https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1400&q=70','https://images.unsplash.com/photo-1532634922-8fe0b757fb13?w=1400&q=70'];
+function fix(img){
+ if(!img.dataset.t){img.dataset.t=1;img.src=UNS[+img.dataset.fb||0];return}
+ const d=document.createElement('div');
+ d.className='ph '+img.className.replace(/object-cover|opacity-\d+/g,'');
+ d.setAttribute('role','img');d.setAttribute('aria-label',img.alt);
+ d.innerHTML='<i data-lucide="'+(+img.dataset.fb===3?'beer':'scissors')+'" class="w-12 h-12"></i>';
+ img.replaceWith(d);icons();
+}
+
+/* Menú móvil */
+const dr=$('#drawer'),bg=$('#burger');
+const tog=o=>{dr.classList.toggle('translate-x-full',!o);bg.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''};
+bg.onclick=()=>tog(true);$('#closeD').onclick=()=>tog(false);
+document.querySelectorAll('.dl').forEach(a=>a.onclick=()=>tog(false));
+
+/* Servicios */
+const SV=[['scissors','Corte de Cabello & Evaluación de Estilo','Desde Taper Fade y cortes modernos hasta estilos clásicos con asesoría según tu rostro y tipo de cabello.'],
+['flame','Ritual de Barba & Afeitado Clásico','Perfilado a navaja, toallas calientes aromáticas, aceites hidratantes y bálsamos de primera línea.'],
+['beer','Combo Garrison (Corte + Barba + Taproom)','Nuestro servicio insignia: renovación completa de imagen acompañada de una cerveza artesanal helada.'],
+['sparkles','Limpieza Facial & Cuidado de Cejas','Tratamientos faciales revitalizantes y perfilado masculino natural.'],
+['waves','Definición de Rizos & Tratamientos Capilares','Hidratación profunda y control de frizz con productos especializados como Kinky Muk.'],
+['palette','Tintes & Camuflaje de Canas','Acabados naturales y modernos con productos profesionales que cuidan la fibra capilar.']];
+$('#svc').innerHTML=SV.map(s=>`<article class="card p-6 flex flex-col"><i data-lucide="${s[0]}" class="w-8 h-8 text-amber-l"></i><h3 class="text-xl font-semibold mt-4">${s[1]}</h3><p class="text-silver text-sm mt-2 leading-relaxed flex-1">${s[2]}</p><a class="btn btn-o w-full mt-5" target="_blank" rel="noopener" href="${WA}${encodeURIComponent('Hola The Garrison, quiero reservar: '+s[1])}"><i data-lucide="message-circle" class="w-4 h-4"></i>Reservar por WhatsApp</a></article>`).join('');
+
+/* Estado en tiempo real (hora de Lima) */
+function status(){
+ const p=new Intl.DateTimeFormat('en-US',{timeZone:'America/Lima',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+ const g=t=>p.find(x=>x.type===t).value;
+ const day=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday'));
+ const m=(+g('hour')%24)*60+ +g('minute');
+ const bar=$('#statusBar');let open=false,msg;
+ if(day===3)msg='Cerrado ahora · Miércoles descanso, volvemos el jueves 10:30 a.m.';
+ else{const o=day===0?690:630,c=day===0?1200:1290,cl=day===0?'8:00 p.m.':'9:30 p.m.',op=day===0?'11:30 a.m.':'10:30 a.m.';
+  if(m>=o&&m<c){open=true;msg='Abierto hoy hasta las '+cl}
+  else if(m<o)msg='Cerrado ahora · Abrimos hoy a las '+op;
+  else msg=day===2?'Cerrado ahora · Mañana miércoles descansamos, volvemos el jueves 10:30 a.m.':'Cerrado ahora · Abrimos mañana';}
+ bar.innerHTML=`<span class="${open?'text-green-400':'text-red-400'}"><span class="dot">●</span> ${msg}</span>`;
+}
+status();setInterval(status,60000);
+
+/* Agendador */
+const d=$('#bDate'),pad=n=>String(n).padStart(2,'0'),t=new Date();
+d.min=`${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`;
+const DN=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+const dayOf=v=>{const[y,m,dd]=v.split('-').map(Number);return new Date(y,m-1,dd).getDay()};
+function chk(){
+ const e=$('#bErr'),h=$('#bHint');e.classList.add('hidden');h.textContent='';
+ if(!d.value)return true;
+ const w=dayOf(d.value);
+ if(w===3){e.textContent='Los miércoles el local descansa. Elige otra fecha.';e.classList.remove('hidden');return false}
+ if(w===0)h.textContent='Domingos atendemos de 11:30 a.m. a 8:00 p.m.';
+ return true;
+}
+d.onchange=chk;
+$('#bGo').onclick=()=>{
+ const n=$('#bName').value.trim(),e=$('#bErr');
+ if(!n||!d.value){e.textContent='Completa tu nombre y la fecha para continuar.';e.classList.remove('hidden');return}
+ if(!chk())return;
+ const f=d.value.split('-').reverse().join('/'),w=DN[dayOf(d.value)];
+ const msg=`Hola The Garrison 💈, soy ${n}.\nQuiero separar una cita:\n• Servicio: ${$('#bSvc').value}\n• Barbero: ${$('#bBar').value}\n• Fecha: ${w} ${f}\n• Turno: ${$('#bTurn').value}\n¿Tienen disponibilidad? ¡Gracias!`;
+ window.open(WA+encodeURIComponent(msg),'_blank');
+};
+
+/* La Ruta Garrison */
+const ST={'Fade / Moderno':'Taper o skin fade con acabado limpio. Te sugerimos pomada Reuzel base agua para fijación firme con brillo medio.','Clásico / Ejecutivo':'Corte de tijera con raya definida y perfilado a navaja. Te sugerimos pomada Reuzel base grasa para un acabado clásico y brillante.','Rizos / Texturizado':'Corte que respeta el volumen natural, hidratación profunda y definición. Te sugerimos crema Kinky Muk o barro Muk Haircare para controlar el frizz.'};
+const DR={'Cerveza Artesanal de Barril':'Después de la silla, una cerveza de barril helada en el taproom.','Bebida sin alcohol / Café':'Después del corte, un café o bebida sin alcohol en el taproom.','Solo servicio de barbería':'Solo barbería, sin paradas: vas directo a la silla.'};
+let sel={s:null,d:null};
+function chips(id,obj,k){
+ $(id).innerHTML=Object.keys(obj).map(x=>`<button type="button" class="chip" aria-pressed="false">${x}</button>`).join('');
+ $(id).querySelectorAll('.chip').forEach(b=>b.onclick=()=>{$(id).querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');sel[k]=b.textContent;upd()});
+}
+function upd(){
+ const o=$('#rOut'),g=$('#rGo');
+ if(sel.s&&sel.d){o.innerHTML=`<strong class="text-bone">${sel.s}:</strong> ${ST[sel.s]}<br><br><strong class="text-bone">${sel.d}:</strong> ${DR[sel.d]}`;g.disabled=false}
+ else{o.textContent=sel.s?ST[sel.s]:'Elige un estilo y un acompañamiento para ver tu ruta.';g.disabled=true}
+}
+chips('#rStyle',ST,'s');chips('#rDrink',DR,'d');
+$('#rGo').onclick=()=>window.open(WA+encodeURIComponent(`Hola The Garrison 💈, quiero separar mi Ruta Garrison:\n• Estilo: ${sel.s}\n• Acompañamiento: ${sel.d}\n¿Qué horarios tienen disponibles?`),'_blank');
+
+icons();
+</script>
+</body>
+</html>
